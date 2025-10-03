@@ -1,0 +1,11 @@
+/*
+✅ 建立 CSS 檔案並引入 Tailwind
+在 src/index.css 或主要 CSS 檔案中加入：
+這代表已完成 Tailwind 的樣式初始化，現在只要搭配 CLI 編譯，就能開始使用 Tailwind 的所有功能。
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Rubik&display=swap"); 

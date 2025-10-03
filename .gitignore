@@ -1,0 +1,59 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.env
+
+# cd frontend
+# git rm --cached .env
+# git add .
+# git commit -m "Update .gitignore and Navbar layout"
+
+
+
+# 確保 .env 沒有被加入版本控制（如果已經加入過，請執行 git rm --cached .env）。
+# ✅ 如果你的 .env 檔案已經被加入版本控制（Git 追蹤中），你需要執行以下指令來取消追蹤但保留檔案本身：
+# git rm	從 Git 中移除檔案。
+# --cached	只移除 Git 的追蹤，不刪除本地檔案。
+# .env	指定要移除追蹤的檔案。
+
+# 提交變更到 Git 把這次移除 .env 的操作提交到 Git： git commit -m "Remove .env from version control"
+
+
+
+# ✅ 方法一：使用 git status
+# 🔍 檢查輸出中是否有 .env：
+#       如果 沒有 .env 出現 → 表示 Git 不再追蹤它 ✅
+#       如果 有 .env 出現 → 表示它仍在追蹤中 ❌
+
+# ✅ 方法二：使用 git ls-files
+# 這個指令會列出所有 Git 正在追蹤的檔案：
+# git ls-files | grep .env
+
+
+# rm -rf .git => 刪除 Git 歷史紀錄
+# git init
+# git add .
+# git commit -m "Initial clean commit"
+# git remote add origin https://github.com/HopeYouHaveANiceDay/FINSHARK.git  
+# git push -u origin main --force
