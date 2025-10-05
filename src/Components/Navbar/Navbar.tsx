@@ -1,5 +1,16 @@
 
+/* 
+CSS flexbox ~
 
+📦 元件簡介:
+這是一個網站導覽列（Navbar）元件，包含：
+    登入與註冊按鈕
+    網站 Logo
+    Dashboard 連結
+    使用 Tailwind CSS 做排版與樣式設計
+
+    https://www.w3schools.com/css/css3_flexbox_container.asp 
+*/
 
 import React from 'react';
 import logo from "./logo.png";
@@ -8,34 +19,93 @@ interface Props {}
 
 const Navbar: React.FC<Props> = (props: Props) => {
   return (
-    <nav className="bg-white px-6 py-4">
-      <div className="flex items-center justify-between max-w-6xl mx-auto">
-        {/* 左側：Logo + Dashboard */}
-        <div className="flex items-center space-x-6">
-          <img src={logo} alt="Logo" className="h-10" />
-          <a href="#" className="text-black font-bold hover:text-darkBlue">
-            Dashboard
-          </a>
-        </div>
+    <div>
+      <style>
+        {`
+          .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color:  #ffffff;
+            padding: 10px;
+          }
+          .flex-container > div {
+            background-color: #ffffff;
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+          }
+          .flex-container .right-section {
+            display: flex;
+            align-items: center;
+            margin-left: auto; * 將右側按鈕推到右邊 */
+          }
+          .signup-button {
+            bacground-color: #f9ddf4ff;
+            padding: 10px 20px;
+            border-radius: 5px; /* 可選：圓角邊框 */
+            text-decoration: none; /* 去掉下劃線 */
+            color: black; /* 按鈕文字顏色 */
+          }
+        `}
+      </style>
 
-        {/* 右側：Login + Signup */}
-        <div className="flex items-end space-x-6">
-          <div className="text-black hover:text-darkBlue cursor-pointer">Login</div>
+      <div className="flex-container">
+        <div>
+          <img src={logo} alt="Logo" className="h-10 mr-2" />
+        </div>
+        <div>
+          <a href="#" className="text-black font-bold">Dashboard</a>
+        </div>
+        <div className="right-section">
+          <div className="text-black hover:text-darkBlue mr-2">Login</div>
           <a
             href="#"
-            className="px-6 py-2 font-bold rounded text-white bg-lightGreen hover:opacity-70"
+            className="signup-button"
           >
             Signup
           </a>
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 
 export default Navbar;
 
+// cursor-pointer 是 Tailwind CSS 的一個實用 class，用來設定當滑鼠移到元素上時，游標變成「手指形狀」，表示這個元素是可以點擊的。
+// 加上 cursor-pointer 之後，游標會變成手指形狀 👉
 
+/*
+這段程式碼其實是將「Logo + Dashboard」放在左側，「Login + Signup」放在右側，但你提到「第一行是 Logo 和 Dashboard，第二行是 Login，第三行是 Signup」，這可能是因為畫面在小螢幕或窄視窗下自動換行了。
+
+📱 為什麼 Login 和 Signup 會跑到下一行？
+這通常是因為畫面寬度不足，導致 Flexbox 的兩個子區塊無法並排顯示，系統就會自動將右側的內容換行到下一行。這種情況在手機或窄視窗中很常見。
+
+✅ 如何讓 Login 和 Signup 保持在右側同一行？
+你可以考慮以下方式來避免換行：
+
+確保外層容器有足夠寬度，例如使用 w-full 或 min-w-[某個值]。
+使用 flex-wrap 控制是否允許換行。
+加入響應式設計，例如使用 md:flex 或 lg:flex 來在不同螢幕尺寸下調整排版。
+
+
+
+在 MacBook 上開啟這個畫面，卻看到 Login 和 Signup 沒有在右側同一行，可能是以下幾個原因造成的：
+
+🧭 可能原因分析
+視窗寬度不足：
+即使是 MacBook，如果瀏覽器視窗被縮小（例如不是全螢幕），Flexbox 的左右兩側內容可能會因空間不足而自動換行。
+Tailwind 預設不會強制內容不換行，除非你加上 flex-nowrap。
+外層容器寬度限制：
+你用了 max-w-6xl，這會限制容器最大寬度約為 1536px。如果視窗小於這個寬度，內容就可能擠不下。
+mx-auto 只是讓容器置中，並不保證內容不會換行。
+內容本身太寬：
+Logo 圖片 + Dashboard 文字 + Login + Signup 四個元素加起來可能超過容器寬度，導致右側元素被擠到下一行。
+
+
+*/
 /* 以下是使用 Tailwind CSS */
 
 /*
