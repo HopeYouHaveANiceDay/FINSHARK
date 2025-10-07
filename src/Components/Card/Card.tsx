@@ -27,8 +27,8 @@ const Card: React.FC<Props> = ({ id, searchResult, onPortfolioCreate }) => {
           .card-column {
             flex: 1;
             min-width: 150px;
-            font-size: 14px;
-            color: #333;
+            font-size: 15px;
+            color: #030303ff;
             font-weight: 500;
           }
 

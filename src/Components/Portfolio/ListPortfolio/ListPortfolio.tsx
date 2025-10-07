@@ -46,21 +46,21 @@ const ListPortfolio = ({portfolioValues, onPortfolioDelete}: Props) => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #fff7e3ff;
+            background-color: #fff7efff;
             padding: 20px;
           }
 
           .portfolio-header {
-            font-size: 24px;
+            font-size: 21px;
             font-weight: bold;
             margin-bottom: 10px;
+            color: #bc7171ff;
           }
 
           .portfolio-message {
-            font-size: 16px;
-            margin-bottom: 20px;
+            font-size: 15px;
             text-align: center;
-            max-width: 600px;
+            color: #7c6f6fff;
           }
 
           .portfolio-list {
@@ -87,7 +87,7 @@ const ListPortfolio = ({portfolioValues, onPortfolioDelete}: Props) => {
           </div>
         ) : (
           <>
-            <h3 className="text-xl font-semibold text-center">
+            <h3 className="portfolio-message">
               Your portfolio is empty. Please click the Add button to add items to your portfolio.
             </h3>
           </>
