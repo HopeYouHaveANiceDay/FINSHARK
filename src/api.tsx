@@ -2,6 +2,22 @@
 // This part is slightly different from the YouTube video.
 import axios from "axios";
 import { CompanySearch } from "./company";
+import { queryAllByAltText } from "@testing-library/dom";
+
+interface SearchResponse {
+  data: CompanySearch[];
+}
+
+export const searchCompanies = async (query: string) => {
+  const data = await axios.get<SearchResponse>(
+    `https://financialmodelingprep.com/stable/search-symbol?query=${query}&apikey=${process.env.REACT_APP_API_KEY}`
+  );
+  return data;
+};
+
+/*
+import axios from "axios";
+import { CompanySearch } from "./company";
 
 interface SearchResponse {
   data: CompanySearch[];
@@ -14,6 +30,9 @@ export const searchCompanies = async (query: string) => {
     );
     return data;
 };
+*/
+
+
 
 /*
 axios 是一個基於 Promise 的 JavaScript HTTP 客戶端，通常用於在瀏覽器和 Node.js 環境中進行 HTTP 請求。它的主要特點包括：

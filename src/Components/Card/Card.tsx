@@ -1,43 +1,63 @@
-
-/*
-這段程式碼是使用 React + TypeScript 建立的一個元件 Card，用來顯示某間公司的股票資訊與加入投資組合的按鈕。
-*/
-
 import React, { SyntheticEvent } from 'react';
-import "./Card.css";
-import { CompanySearch } from '../../company';
-import AddPortfolio from '../Portfolio/AddPortfolio/AddPortfolio';
+import "./Card.css"; // 引入卡片的樣式檔案
+import { CompanySearch } from '../../company'; // 引入公司搜尋結果的資料型別
+import AddPortfolio from '../Portfolio/AddPortfolio/AddPortfolio'; // 引入「加入投資組合」的功能元件
 
 interface Props {
-  id: string;
-  searchResult: CompanySearch;
-  onPortfolioCreate: (e: SyntheticEvent) => void;
+  id: string;  // 卡片的唯一識別碼
+  searchResult: CompanySearch;   // 公司搜尋結果的資料物件
+  onPortfolioCreate: (e: SyntheticEvent) => void; // 點擊加入投資組合時觸發的事件函式
 }
 
 const Card: React.FC<Props> = ({ id, searchResult, onPortfolioCreate }) => {
   return (
-    <div
-      className="text-center"
-      key={id} 
-      id={id} 
-      >
+    <>
+      <style>
+        {`
+          .card-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #f6d7d7;
+            background-color: #fff;
+            flex-wrap: wrap;
+          }
 
-      <h2 className="font-bold text-center text-black md:text-left">
-        {searchResult.name} ({searchResult.symbol})
-      </h2>
-      <p className="text-black">{searchResult.currency}</p>
-      <p className="font-bold text-black">
-        {searchResult.exchangeShortName} - {searchResult.stockExchange}
-      </p>
-      <AddPortfolio
-        onPortfolioCreate={onPortfolioCreate}
-        symbol={searchResult.symbol}
-      />
-    </div>
+          .card-column {
+            flex: 1;
+            min-width: 150px;
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+          }
+
+          .card-row span:last-child {
+            margin-right: auto; /* 確保最後一列的間距 */
+          }
+        `}
+      </style>
+
+      <div className="card-row" key={id} id={id}>
+        <span className="card-column">{searchResult.name} ({searchResult.symbol})</span>
+        <span className="card-column">{searchResult.currency}</span>
+        <span className="card-column">
+          {searchResult.exchangeShortName && searchResult.stockExchange 
+            ? `${searchResult.exchangeShortName} - ${searchResult.stockExchange}` 
+            : ''}
+        </span>
+        <span className="card-column">
+          <AddPortfolio
+            onPortfolioCreate={onPortfolioCreate}
+            symbol={searchResult.symbol}
+          />
+        </span>
+      </div>
+    </>
   );
 };
 
-export default Card;
+export default Card; // 將 Card 元件作為預設匯出
 
 /* 
 import React, { SyntheticEvent } from 'react';

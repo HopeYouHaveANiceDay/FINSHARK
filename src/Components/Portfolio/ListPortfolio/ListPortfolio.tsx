@@ -88,11 +88,8 @@ const ListPortfolio = ({portfolioValues, onPortfolioDelete}: Props) => {
         ) : (
           <>
             <h3 className="text-xl font-semibold text-center">
-              Your portfolio is empty.
+              Your portfolio is empty. Please click the Add button to add items to your portfolio.
             </h3>
-            <h4 className="portfolio-message">
-              Welcome to this page! Please search for information using the search bar. There are no results at the moment.
-            </h4>
           </>
         )}
       </section>
