@@ -26,15 +26,15 @@ const Navbar: React.FC<Props> = (props: Props) => {
             display: flex;
             flex-direction: row;
             background-color:  #ffffff;
-            padding: 10px;
+            padding: 1px;
           }
           .flex-container > div {
             background-color: #ffffff;
-            width: 200px;
+            width: 350px;
             margin: 10px;
             text-align: center;
-            line-height: 75px;
-            font-size: 30px;
+            line-height: 45px;
+            font-size: 19px;
           }
           .flex-container .right-section {
             display: flex;
@@ -43,7 +43,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
           }
           .signup-button {
             bacground-color: #f9ddf4ff;
-            padding: 10px 20px;
+            padding: 1px 75px;
             border-radius: 5px; /* 可選：圓角邊框 */
             text-decoration: none; /* 去掉下劃線 */
             color: black; /* 按鈕文字顏色 */

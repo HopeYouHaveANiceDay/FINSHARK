@@ -37,34 +37,67 @@ const ListPortfolio = ({portfolioValues, onPortfolioDelete}: Props) => {
 //                     (2) return <CardPortfolio portfolioValue={portfolioValue} />;：將當前的 portfolioValue 作為屬性傳遞給 CardPortfolio 組件，以便在該組件內部使用。
 
 // 總結: 通過將 portfolioValue 傳遞給 CardPortfolio 組件，可以在該組件中顯示每個投資組合的具體信息。這種方法使得組件之間的數據傳遞更加清晰，增強了代碼的可讀性和可維護性。這樣，每個 CardPortfolio 可以根據傳入的值渲染出不同的內容，從而實現動態展示。
-return (
 
-    <section id="portfolio">
-      <h2 className="mb-3 mt-3 text-3xl font-semibold text-center md:text-4xl">
-        My Portfolio
-      </h2>
-      <div className="relative flex flex-col items-center max-w-5xl mx-auto space-y-10 px-10 mb-5 md:px-6 md:space-y-0 md:space-x-7 md:flex-row">
-        <>
-          {portfolioValues.length > 0 ? (
-            portfolioValues.map((portfolioValue) => {
-              return (
-                <CardPortfolio
-                  portfolioValue={portfolioValue}
-                  onPortfolioDelete={onPortfolioDelete}
-                />
-              );
-            })
-          ) : (
-            <h3 className="mb-3 mt-3 text-xl font-semibold text-center md:text-xl">
+  return (
+    <div>
+      <style>
+        {`
+          .portfolio-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 20px;
+          }
+
+          .portfolio-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+
+          .portfolio-message {
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            max-width: 600px;
+          }
+
+          .portfolio-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+          }
+        `}
+      </style>
+
+      <section id="portfolio" className="portfolio-section">
+        <h1 className="portfolio-header">My Portfolio</h1>
+
+        {portfolioValues.length > 0 ? (
+          <div className="portfolio-list">
+            {portfolioValues.map((portfolioValue) => (
+              <CardPortfolio
+                key={portfolioValue}
+                portfolioValue={portfolioValue}
+                onPortfolioDelete={onPortfolioDelete}
+              />
+            ))}
+          </div>
+        ) : (
+          <>
+            <h3 className="text-xl font-semibold text-center">
               Your portfolio is empty.
             </h3>
-          )}
-        </>
-      </div>
-    </section>
-  )
-}
+            <h4 className="portfolio-message">
+              Welcome to this page! Please search for information using the search bar. There are no results at the moment.
+            </h4>
+          </>
+        )}
+      </section>
+    </div>
+  );
+};
 
-// (5) 導出組件:
-//     => 將 ListPortfolio 組件作為默認導出，以便在其他文件中使用。
-export default ListPortfolio
+export default ListPortfolio;

@@ -22,8 +22,7 @@ interface Props {
         ))
       ) : (
         <p className="text-center">
-          Welcome to this page! Please search for information using the search bar. There are no results at the moment.
-        </p>
+          There are no results for your search at the moment. Please enter the correct keywords, such as 'AAPL' or 'TSLA', into the search bar above, then click the Search button or press Enter on your keyboard.</p>
       )}
     </>
   );
@@ -56,7 +55,7 @@ interface Props {
         ))
       ) : (
         <p className="flex flex-col items-center justify-center py-10">
-          Welcome to this page! Please search for information using the search bar. There are no results at the moment.
+          Please search for information using the search bar. There are no results at the moment.
         </p>
       )}
     </>
