@@ -26,11 +26,9 @@ const Navbar: React.FC<Props> = () => {
           .flex-container {
             display: flex;
             flex-direction: row;
-            background-color: #ffffffff;
             padding: 1px;
           }
           .flex-container > div {
-            background-color: #ffffff;
             width: 350px;
             margin: 10px;
             text-align: center;
@@ -41,21 +39,21 @@ const Navbar: React.FC<Props> = () => {
             display: flex;
             align-items: center;
             margin-left: auto; /* 將右側按鈕推到右邊 */
-            gap: 20px; /*讓Signup and Login button之間有間距 */
+            gap: 10px; /*讓Signup and Login button之間有間距 */
           }
-          .signup-button {
-            background-color: #e4fae6ff;
-            padding: 2px 30px; /* smaller horizontal padding */
-            border-radius: 15px;
+
+            .Login-button {
+            background-color: #d2e5eaff;
+            padding: 1px 20px; /* smaller horizontal padding */
+            border-radius: 8px;
             text-decoration: none;
             color: black;
-            
+        }
 
-          }
-            .Login-button {
-            background-color: #def5faff;
-            padding: 2px 30px; /* smaller horizontal padding */
-            border-radius: 15px;
+            .Signup-button {
+            background-color: #c6f2f4ff;
+            padding: 1px 16px; /* smaller horizontal padding */
+            border-radius: 8px;
             text-decoration: none;
             color: black;
           }
@@ -75,7 +73,7 @@ const Navbar: React.FC<Props> = () => {
         </div>
         <div className="right-section">
           <a href="#" className="Login-button">Login</a>
-          <a href="#" className="signup-button">Signup</a>
+          <a href="#" className="Signup-button">Signup</a>
         </div>
       </div>
     </div>

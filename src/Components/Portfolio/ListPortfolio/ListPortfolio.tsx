@@ -46,21 +46,22 @@ const ListPortfolio = ({portfolioValues, onPortfolioDelete}: Props) => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #fff7efff;
+          
             padding: 20px;
           }
 
           .portfolio-header {
-            font-size: 21px;
+            font-size: 25px;
             font-weight: bold;
-            margin-bottom: 10px;
-            color: #bc7171ff;
+            margin-top: 5px;
+            margin-bottom: 40px;
+            color: #45595cff;
           }
 
           .portfolio-message {
-            font-size: 15px;
+            font-size: 17px;
             text-align: center;
-            color: #7c6f6fff;
+            color: #657084ff;
           }
 
           .portfolio-list {
@@ -68,6 +69,7 @@ const ListPortfolio = ({portfolioValues, onPortfolioDelete}: Props) => {
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
+            width: 100%;
           }
         `}
       </style>
@@ -75,8 +77,13 @@ const ListPortfolio = ({portfolioValues, onPortfolioDelete}: Props) => {
       <section id="portfolio" className="portfolio-section">
         <h1 className="portfolio-header">My Portfolio</h1>
 
-        {portfolioValues.length > 0 ? (
-          <div className="portfolio-list">
+        {portfolioValues.length > 0 ? (      
+          // make sure it has a max-width or is constrained:
+          // flexWrap: 'wrap'    =>  當子元素超出容器寬度時，會自動換行，避免擠成一排。
+          // justifyContent: 'center'   =>  將所有子元素在主軸（橫向）上置中排列。
+          // maxWidth: '1200px'  =>  設定容器最大寬度為 1200px，避免在大螢幕上過度拉寬。
+          // margin: '0 auto'    =>  上下外邊距為 0，左右自動置中，讓整個容器在頁面中水平居中。
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center', maxWidth: '1200px', margin: '0 auto'}}>
             {portfolioValues.map((portfolioValue) => (
               <CardPortfolio
                 key={portfolioValue}
@@ -86,11 +93,9 @@ const ListPortfolio = ({portfolioValues, onPortfolioDelete}: Props) => {
             ))}
           </div>
         ) : (
-          <>
             <h3 className="portfolio-message">
               Your portfolio is empty. Please click the Add button to add items to your portfolio.
             </h3>
-          </>
         )}
       </section>
     </div>

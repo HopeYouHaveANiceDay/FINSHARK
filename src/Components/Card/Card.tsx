@@ -19,22 +19,23 @@ const Card: React.FC<Props> = ({ id, searchResult, onPortfolioCreate }) => {
             align-items: center;
             justify-content: space-between;
             padding: 10px;
-            border-bottom: 1px solid #f6d7d7;
-            background-color: #fff;
+            border-bottom: 1px solid #c5d6daff;
+            background-color: #fcfeffff;
             flex-wrap: wrap;
           }
 
           .card-column {
             flex: 1;
             min-width: 150px;
-            font-size: 15px;
-            color: #030303ff;
+            font-size: 17px;
+            color: #475051ff;
             font-weight: 500;
           }
 
           .card-row span:last-child {
             margin-right: auto; /* 確保最後一列的間距 */
           }
+
         `}
       </style>
 
@@ -58,6 +59,14 @@ const Card: React.FC<Props> = ({ id, searchResult, onPortfolioCreate }) => {
 };
 
 export default Card; // 將 Card 元件作為預設匯出
+
+/* 
+希望 AddPortfolio 元件本身使用 .portfolio-item 的樣式（例如加上邊框、背景色等），
+你可以將這個 className 套用在 AddPortfolio 的外層容器中。
+這通常是在 Card.tsx 裡包住 AddPortfolio 的 <span> 或 <div>。
+*/
+
+
 
 /* 
 import React, { SyntheticEvent } from 'react';

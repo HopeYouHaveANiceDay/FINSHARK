@@ -1,3 +1,9 @@
+
+body {
+  background-color: #eefbfd; /* 你想要的背景色，例如淡藍色 */
+}
+
+
 .card{
     width: 350px;
     height:450px;

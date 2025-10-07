@@ -4,11 +4,20 @@ import { CompanySearch } from '../../company';
 import { v4 as uuidv4 } from 'uuid';
 
 interface Props {
-  searchResults: CompanySearch[];
-  onPortfolioCreate: (e: SyntheticEvent) => void;
+  searchResults: CompanySearch[]; // searchResults：一個公司搜尋結果的陣列。
+  onPortfolioCreate: (e: SyntheticEvent) => void;  // onPortfolioCreate：當使用者點擊某個卡片的「加入投資組合」按鈕時，觸發的事件函式。
 }
 
-  const CardList: React.FC<Props> = ({ searchResults, onPortfolioCreate }) => {
+/*
+如果 searchResults 有資料，就使用 .map() 將每筆結果渲染成一個 Card 元件。
+    id={result.symbol}：傳入公司代碼作為識別。
+    key={uuidv4()}：每個卡片都用唯一的 key，避免 React 警告。
+    searchResult={result}：將公司資料傳給 Card 元件。
+    onPortfolioCreate={onPortfolioCreate}：傳入事件處理函式。
+如果沒有搜尋結果，就顯示一段提示文字，告訴使用者如何正確搜尋。
+*/
+
+  const CardList: React.FC<Props> = ({ searchResults, onPortfolioCreate }) => { // CardList 是一個函式型元件，接收 searchResults 和 onPortfolioCreate 作為參數。
   return (
     <>
       {searchResults.length > 0 ? (
@@ -28,7 +37,7 @@ interface Props {
   );
 };
 
-export default CardList;
+export default CardList; // 將 CardList 元件作為預設匯出，讓其他檔案可以引用使用它。
 
 /*
 import React, { SyntheticEvent } from 'react';

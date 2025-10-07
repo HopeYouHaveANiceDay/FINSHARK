@@ -24,8 +24,8 @@ const Search: React.FC<Props> = ({ onSearchSubmit, search, handleSearchChange })
           }
 
           .search-button {
-            background-color: #fbe8f6ff;
-            /* border: 2px solid #f5ccccff;*/
+            background-color: #b3e6edff;
+            /* border: 2px solid #a73030ff;*/
             padding: 10px 20px;
             border-radius: 0px;
             border: none;

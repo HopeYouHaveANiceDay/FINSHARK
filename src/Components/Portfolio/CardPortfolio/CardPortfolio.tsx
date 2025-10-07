@@ -1,6 +1,6 @@
 // React Typescript 2023 - 13. Arrays: https://youtu.be/GOuy-AJjKfs?si=Zqg-59M1TKvbJXoc
 
-
+// 這個元件的用途是：在投資組合清單中顯示每一項投資項目，並提供刪除按鈕。畫面設計簡潔，排版清晰，適合用於卡片式的投資管理介面。
 import React, { SyntheticEvent } from 'react'
 import DeletePortfolio from '../DeletePortfolio/DeletePortfolio';
 // what is the difference between 'import DeletePortfolio from '../DeletePortfolio/DeletePortfolio'; ' and 'import DeletePortfolio from './DeletePortfolio'; '?????
@@ -27,18 +27,62 @@ interface Props {
     portfolioValue: string;
     onPortfolioDelete: (e: SyntheticEvent) => void;
 }
+// portfolioValue：代表投資組合中的某一項目，例如股票代號或名稱。
+// onPortfolioDelete：當使用者點擊刪除按鈕時要執行的事件函式。
 
+
+// 這是一個函式型元件，透過解構方式接收 portfolioValue 和 onPortfolioDelete 兩個 props。
+// .portfolio-item 是外層容器，使用 Flex 垂直排列，並加上邊框、圓角、陰影與背景色。
+// .portfolio-text 是投資項目的文字樣式，置中顯示、加粗。
+// DeletePortfolio 是刪除按鈕元件，放在卡片底部。
 const CardPortfolio = ({portfolioValue, onPortfolioDelete}: Props) => {
   return (
+    // ✅ 解決方法：讓文字在卡片內自動換行、不溢出
+    // 請確認你在 CardPortfolio.tsx 中的 .portfolio-text 和 .portfolio-item CSS 有以下設定
+    <> 
+      <style>
+        {`
+          .portfolio-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #5997c3ff;
+            border-radius: 10px;
+            padding: 0px;
+            margin-bottom: 1px;
+            background-color: #fcfffeff; /* = ListPortfolio*/
+            /*box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);*/
+            width: 100px; /* Avoid width: 100% unless the parent container is tightly controlled.*/
+            max-height: 130px;
+            box-sizing: border-box;
+            overflow: hidden;
+            word-break: break-word;      /* ✅ 強制長字斷行 */            
+          }
+          .portfolio-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4d6573ff;
+            margin-bottom: 0px;
+            text-align: center;
+            word-wrap: break-word;   /* ✅ Wrap long words 讓長字自動換行 */
+            overflow-wrap: break-word;   /* ✅ Modern alternative 現代瀏覽器支援  */
+            white-space: normal;   /* ✅ Allow line breaks 允許換行 */
+            max-width: 100%;  /* ✅ 限制寬度不超出容器 */ ..... 使用 <p> 包住文字: <p className="portfolio-text">
+          }
+        `}    
+      </style>
+      
 
-    <div className="flex flex-col w-full p-8 space-y-4 text-center rounded-lg shadow-lg md:w-1/3">
-      <p className="pt-6 text-xl font-bold">{portfolioValue}</p>
+    <div className="portfolio-item">
+      <p className="portfolio-text">{portfolioValue}</p> 
       <DeletePortfolio
         portfolioValue={portfolioValue}
         onPortfolioDelete={onPortfolioDelete}
       />
     </div>
+    </>
   );
 };
 
-export default CardPortfolio
+export default CardPortfolio;
