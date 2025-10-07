@@ -59,15 +59,28 @@ function App() {
     
         const onSearchSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();        // 阻止默認的表單提交行為
-        const result = await searchCompanies(search);   // 進行搜索
-        if(typeof result === "string") {
+        
+         if (!search.trim()) {
+            alert("Please enter the correct keywords, such as 'AAPL' or 'TSLA', into the search bar above, then click the Search button or press Enter on your keyboard.");
+            return;
+          };
+
+
+        const result = await searchCompanies(search); //這行是呼叫後端 API 來搜尋公司資料，並等待結果回傳。searchCompanies 是一個非同步函式，會根據使用者輸入的關鍵字（例如 "AAPL"）去查詢資料。
+        if(typeof result === "string") { // 如果回傳的 result 是一個字串，代表這是一個錯誤訊息（例如伺服器錯誤、找不到資料等），就用 setserverError(result) 把錯誤訊息儲存起來，讓畫面可以顯示錯誤。
           setserverError(result);   // 如果結果是錯誤訊息，設置伺服器錯誤狀態
-        } else if(Array.isArray(result.data)) {
+        } else if(Array.isArray(result.data)) { // 如果 result.data 是一個陣列，代表搜尋成功並取得公司資料，就用 setSearchResult(result.data) 把結果儲存起來，讓畫面可以顯示這些公司卡片。
           setSearchResult(result.data);     // 如果結果是數據數組，設置搜索結果
         }
         console.log(searchResult);   // 輸出當前的搜索結果
-    };
-
+        };
+        /* 
+           ✅ 為什麼這段很重要？
+                  它讓你的程式能夠根據 API 回傳的不同格式（錯誤或資料）做出正確的處理。
+                  避免程式崩潰或顯示錯誤畫面。
+                  提升使用者體驗，讓使用者知道搜尋是否成功。
+        */
+                        
   return (
     <div className="App">
       <Navbar />

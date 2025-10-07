@@ -46,7 +46,7 @@ const ListPortfolio = ({portfolioValues, onPortfolioDelete}: Props) => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #ffffff;
+            background-color: #fff7e3ff;
             padding: 20px;
           }
 

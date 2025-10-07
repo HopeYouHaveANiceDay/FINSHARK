@@ -14,10 +14,11 @@ CSS flexbox ~
 
 import React from 'react';
 import logo from "./logo.png";
+import IconBUBU from "./BUBU.jpg";
 
 interface Props {}
 
-const Navbar: React.FC<Props> = (props: Props) => {
+const Navbar: React.FC<Props> = () => {
   return (
     <div>
       <style>
@@ -25,7 +26,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
           .flex-container {
             display: flex;
             flex-direction: row;
-            background-color:  #ffffff;
+            background-color: #ffffffff;
             padding: 1px;
           }
           .flex-container > div {
@@ -34,38 +35,47 @@ const Navbar: React.FC<Props> = (props: Props) => {
             margin: 10px;
             text-align: center;
             line-height: 45px;
-            font-size: 19px;
+            font-size: 16px;
           }
           .flex-container .right-section {
             display: flex;
             align-items: center;
-            margin-left: auto; * 將右側按鈕推到右邊 */
+            margin-left: auto; /* 將右側按鈕推到右邊 */
+            gap: 20px; /*讓Signup and Login button之間有間距 */
           }
           .signup-button {
-            bacground-color: #f9ddf4ff;
-            padding: 1px 75px;
-            border-radius: 5px; /* 可選：圓角邊框 */
-            text-decoration: none; /* 去掉下劃線 */
-            color: black; /* 按鈕文字顏色 */
+            background-color: #e4fae6ff;
+            padding: 2px 30px; /* smaller horizontal padding */
+            border-radius: 15px;
+            text-decoration: none;
+            color: black;
+            
+
+          }
+            .Login-button {
+            background-color: #def5faff;
+            padding: 2px 30px; /* smaller horizontal padding */
+            border-radius: 15px;
+            text-decoration: none;
+            color: black;
           }
         `}
       </style>
 
       <div className="flex-container">
+
         <div>
-          <img src={logo} alt="Logo" className="h-10 mr-2" />
+          <img src={IconBUBU} alt="BUBU" style={{ height: '90px', marginRight: '8px' }} />
         </div>
+                <div>
+          <img src={logo} alt="Logo" style={{ height: '50px', marginRight: '8px' }} />
+        </div> 
         <div>
           <a href="#" className="text-black font-bold">Dashboard</a>
         </div>
         <div className="right-section">
-          <div className="text-black hover:text-darkBlue mr-2">Login</div>
-          <a
-            href="#"
-            className="signup-button"
-          >
-            Signup
-          </a>
+          <a href="#" className="Login-button">Login</a>
+          <a href="#" className="signup-button">Signup</a>
         </div>
       </div>
     </div>
@@ -73,6 +83,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
 };
 
 export default Navbar;
+
 
 // cursor-pointer 是 Tailwind CSS 的一個實用 class，用來設定當滑鼠移到元素上時，游標變成「手指形狀」，表示這個元素是可以點擊的。
 // 加上 cursor-pointer 之後，游標會變成手指形狀 👉
