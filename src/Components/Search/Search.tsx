@@ -25,6 +25,7 @@ const Search: React.FC<Props> = ({ onSearchSubmit, search, handleSearchChange })
 
           .search-button {
             background-color: #fbe8f6ff;
+            border: 2px solid #f5ccccff;
             padding: 10px 20px;
             border-radius: 0px;
             border: none;
@@ -32,16 +33,14 @@ const Search: React.FC<Props> = ({ onSearchSubmit, search, handleSearchChange })
             color: black;
             cursor: pointer;
             font-size: 12px;
-            height: 100; /* Match height with input */
           }
 
           .search-input {
             padding: 10px;
-            border: 2px solid #ffc9cfff;
+            /* border: 2px solid #f5ccccff; */
             border-radius: 0px;
             width: 300px;
             font-size: 16px;
-            height: 100;
           }
 
           .input-container {
