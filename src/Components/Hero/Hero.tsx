@@ -28,8 +28,10 @@ const Hero: React.FC<Props> = (props: Props) => {
 
         .text-content-1 
         {
+          margin-top: -150px; /* ✅ 向上移動 */
           color: #3e5960ff;
           font-size: 22px;
+          
         }
         
         .text-content-2 
@@ -41,12 +43,12 @@ const Hero: React.FC<Props> = (props: Props) => {
           .image-content {
             flex: 1;
             padding: 20px;
-            margin-left: -150px; /* 向左移動的調整 , 向左移動更多 */
+            margin-left: -130px; /* 向左移動的調整 , 向左移動更多 */
           }
 
           .image-content img {
-            max-width: 40%;
-            height: auto;
+            max-width: 40%;   /* 明確設定寬度 : 圖片最大寬度為容器的 40%，這樣可以讓圖片縮小但仍保持比例。 */
+            height: auto;     /* 保持原始比例 : 根據寬度自動調整高度，保持原始比例。*/
           }
           
       .GetStart-button {
