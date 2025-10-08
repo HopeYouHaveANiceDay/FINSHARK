@@ -15,6 +15,7 @@ CSS flexbox ~
 import React from 'react';
 import logo from "./logo.png";
 import IconBUBU from "./BUBU.jpg";
+import { Link } from 'react-router-dom';
 
 interface Props {}
 
@@ -48,7 +49,7 @@ const Navbar: React.FC<Props> = () => {
             border-radius: 8px;
             text-decoration: none;
             color: black;
-        }
+          }
 
             .Signup-button {
             background-color: #c6f2f4ff;
@@ -64,16 +65,25 @@ const Navbar: React.FC<Props> = () => {
 
         <div>
           <img src={IconBUBU} alt="BUBU" style={{ height: '90px', marginRight: '8px' }} />
-        </div>
-                <div>
+
+
+        <Link to="/">
           <img src={logo} alt="Logo" style={{ height: '50px', marginRight: '8px' }} />
+        </Link>
         </div> 
+
+
         <div>
-          <a href="#" className="text-black font-bold">Dashboard</a>
+          <Link to="/search" className="text-black hover:text-darkBlue">
+            Search
+          </Link>
         </div>
+
+
+
         <div className="right-section">
-          <a href="#" className="Login-button">Login</a>
-          <a href="#" className="Signup-button">Signup</a>
+          <Link to="/login" className="Login-button">Login</Link>
+          <Link to="/signup" className="Signup-button">Signup</Link>
         </div>
       </div>
     </div>
@@ -81,6 +91,38 @@ const Navbar: React.FC<Props> = () => {
 };
 
 export default Navbar;
+
+
+
+/*
+差異是：
+<a href="#" className="text-black font-bold">Dashboard</a>
+與：
+<Link to="/search" className="text-black hover:text-darkBlue">Search</Link>
+
+這兩者在 React 中的用途和行為是不同的，以下是詳細解釋：
+🧾 1. <a href="#">...</a> 是 HTML 的超連結標籤
+✅ 原生 HTML 元素
+🔁 每次點擊都會觸發 頁面重新載入（刷新）
+href="#" 是一個空連結，通常用來暫時占位或測試
+不適合用在 React Router 的 SPA（單頁應用程式）中，因為會破壞 React 的路由控制
+
+🧾 2. <Link to="/search">...</Link> 是 React Router 的元件
+✅ React Router 提供的元件
+🔁 點擊後會在 不重新載入頁面 的情況下切換路由
+to="/search" 指的是你設定的路由路徑（例如 /search 頁面）
+非常適合用在 React SPA 中，因為它保留了應用程式的狀態與效能
+
+
+🆚 差異比較表：
+項目	<a href="#">	<Link to="/search">
+類型	原生 HTML 元素	React Router 元件
+是否刷新頁面	✅ 會重新載入整個頁面	❌ 不會刷新頁面，保持 SPA 狀態
+是否支援路由跳轉	❌ 需要搭配其他邏輯處理	✅ 內建支援 React Router 路由跳轉
+適合用途	外部連結、暫時占位	React 應用內部頁面跳轉
+✅ 建議：
+如果你正在使用 react-router-dom（你已經有 import { Link } from 'react-router-dom'），那麼你應該使用 <Link> 來處理頁面跳轉，這樣可以避免頁面重新載入，保持 React 的單頁應用體驗。
+*/
 
 
 // cursor-pointer 是 Tailwind CSS 的一個實用 class，用來設定當滑鼠移到元素上時，游標變成「手指形狀」，表示這個元素是可以點擊的。

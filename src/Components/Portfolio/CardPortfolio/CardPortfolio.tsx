@@ -3,6 +3,7 @@
 // 這個元件的用途是：在投資組合清單中顯示每一項投資項目，並提供刪除按鈕。畫面設計簡潔，排版清晰，適合用於卡片式的投資管理介面。
 import React, { SyntheticEvent } from 'react'
 import DeletePortfolio from '../DeletePortfolio/DeletePortfolio';
+import { Link } from 'react-router-dom';
 // what is the difference between 'import DeletePortfolio from '../DeletePortfolio/DeletePortfolio'; ' and 'import DeletePortfolio from './DeletePortfolio'; '?????
 /*
 這兩行 import 的差異在於路徑的相對位置:
@@ -39,6 +40,13 @@ const CardPortfolio = ({portfolioValue, onPortfolioDelete}: Props) => {
   return (
     // ✅ 解決方法：讓文字在卡片內自動換行、不溢出
     // 請確認你在 CardPortfolio.tsx 中的 .portfolio-text 和 .portfolio-item CSS 有以下設定
+
+
+/*
+✅ 建議使用時機：
+如果你只是要顯示公司名稱和代碼 → 用 <span>
+如果你希望點擊後跳轉到該公司的詳細頁面 → 用 <Link>
+*/
     <> 
       <style>
         {`
@@ -72,15 +80,18 @@ const CardPortfolio = ({portfolioValue, onPortfolioDelete}: Props) => {
           }
         `}    
       </style>
-      
 
     <div className="portfolio-item">
-      <p className="portfolio-text">{portfolioValue}</p> 
+      <Link to={`/company/${portfolioValue}`} className="portfolio-text"> 
+        {portfolioValue}
+      </Link> 
+
       <DeletePortfolio
         portfolioValue={portfolioValue}
         onPortfolioDelete={onPortfolioDelete}
       />
     </div>
+    
     </>
   );
 };

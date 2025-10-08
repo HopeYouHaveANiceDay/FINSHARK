@@ -1,23 +1,24 @@
-
-// This part is slightly different from the YouTube video.
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { searchCompanies } from './api';
+// import { searchCompanies } from './api';
+import { router } from './Routes/Routes';
+import { RouterProvider } from 'react-router-dom';
 
 // 建立 React 根節點
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-console.log(searchCompanies("tsla"));
+// console.log(searchCompanies("tsla"));
+
+
 // 渲染主應用元件
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} /> 
   </React.StrictMode>
 );
 

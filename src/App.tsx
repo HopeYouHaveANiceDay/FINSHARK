@@ -1,15 +1,32 @@
-import { ChangeEvent, SyntheticEvent, useState } from 'react';
+/* import { ChangeEvent, SyntheticEvent, useState } from 'react';*/
+import { Outlet } from 'react-router';
 import './App.css';
-import CardList from './Components/CardList/CardList';
+import Navbar from './Components/Navbar/Navbar';
+/* import CardList from './Components/CardList/CardList';
 import Search from './Components/Search/Search';
 import { CompanySearch } from './company';
 import { searchCompanies } from './api';
 import ListPortfolio from './Components/Portfolio/ListPortfolio/ListPortfolio';
-import './index.css';
 import Navbar from './Components/Navbar/Navbar';
-import Hero from './Components/Hero/Hero';
+import Hero from './Components/Hero/Hero';*/
 
+
+
+// display the page underneath the nav bar 
 function App() {
+  return <> 
+  <Navbar />
+  <Outlet />
+  </>;
+
+}
+
+export default App;
+/*function value(value: string, index: number, obj: string[]): value is string {
+  throw new Error('Function not implemented.');
+}
+*/
+/* 
 
   // we need to pass down the handle click and what that entails is just making props for it
   const [search, setSearch] = useState<string>("");
@@ -80,8 +97,9 @@ function App() {
                   避免程式崩潰或顯示錯誤畫面。
                   提升使用者體驗，讓使用者知道搜尋是否成功。
         */
-                        
-  return (
+          
+/*
+
     <div className="App">
       <Navbar />
       <Search 
@@ -95,16 +113,7 @@ function App() {
         onPortfolioCreate={onPortfolioCreate}/> {serverError && <h1>{serverError}</h1>}
       
     </div>
-  );
-}
-
-export default App;
-function value(value: string, index: number, obj: string[]): value is string {
-  throw new Error('Function not implemented.');
-}
-
-
-
+*/
 
 
 /* 

@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from 'react';
 import "./Card.css"; // 引入卡片的樣式檔案
 import { CompanySearch } from '../../company'; // 引入公司搜尋結果的資料型別
 import AddPortfolio from '../Portfolio/AddPortfolio/AddPortfolio'; // 引入「加入投資組合」的功能元件
+import { Link } from 'react-router-dom';
 
 interface Props {
   id: string;  // 卡片的唯一識別碼
@@ -39,20 +40,24 @@ const Card: React.FC<Props> = ({ id, searchResult, onPortfolioCreate }) => {
         `}
       </style>
 
-      <div className="card-row" key={id} id={id}>
-        <span className="card-column">{searchResult.name} ({searchResult.symbol})</span>
-        <span className="card-column">{searchResult.currency}</span>
-        <span className="card-column">
+      <div 
+        className="card-row" 
+        key={id} 
+        id={id}
+      >
+        <Link to={`/company/${searchResult.symbol}`} className="card-column">{searchResult.name} ({searchResult.symbol})</Link>
+        <Link className="card-column" to={''}>{searchResult.currency}</Link>
+
           {searchResult.exchangeShortName && searchResult.stockExchange 
             ? `${searchResult.exchangeShortName} - ${searchResult.stockExchange}` 
             : ''}
-        </span>
-        <span className="card-column">
+
+
           <AddPortfolio
             onPortfolioCreate={onPortfolioCreate}
             symbol={searchResult.symbol}
           />
-        </span>
+      
       </div>
     </>
   );
