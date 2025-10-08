@@ -8,68 +8,85 @@ interface Props {}
 const Hero: React.FC<Props> = (props: Props) => {
   return (
   <>
-      <style>
-        {`
-          .flex-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-          }
+    <style>
+      {`
+        .flex-container 
+        {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+        }
 
-          .text-content {
-            flex: 1;
-            padding: 20px;
-          }
+        .text-content  
+        {
+          flex-direction : column;
+          flex: 1;
+          padding: 20px;
+        }
+
+        .text-content-1 
+        {
+          color: #3e5960ff;
+          font-size: 22px;
+        }
+        
+        .text-content-2 
+        {
+          color: #4c6779ff;
+          font-size: 18px;
+        }
+
           .image-content {
             flex: 1;
             padding: 20px;
+            margin-left: -150px; /* 向左移動的調整 , 向左移動更多 */
           }
+
           .image-content img {
-            max-width: 100%;
+            max-width: 40%;
             height: auto;
           }
           
       .GetStart-button {
-        background-color: #aee8f6ff;
+        background-color: #b6e8f5ff;
         padding: 5px 10px; /* smaller horizontal padding */
         border-radius: 8px;
         text-decoration: none;
-        color: black;
+        color: #313f42ff;
         font-size: 20px;
         font-weight: bold;
         transition: background-color 0.3s ease;
       }
       .GetStart-button:hover {
-        background-color: #b5d3e0;
+        background-color: #c2e6f5ff;
         cursor: pointer;
       }
     `}
   </style>
 
     <section id="hero" className="flex-container">
-      <div className="text-center">
-          <div className="text-center">
-          <h1 className="text-5xl font-bold text-center lg:text-6xl lg:max-w-md lg:text-center">
+      <div className="text-content">
+          <h1 className="text-content-1"> 
             Financial data with no news.
           </h1>
-          <p className="text-2xl text-center text-gray-400 lg:max-w-md lg:text-center">
+          <p className="text-content-2"> 
             Search relevant financial documents without fear mongering and fake
             news.
           </p>
-          <div className="mx-auto lg:mx-0">
+
             <Link
               to="/search"
               className="GetStart-button">
               Get Started
             </Link>
           </div>
-        </div>
-        <div className="flex-container">
+
+        <div className="image-content">
           <img src={hero} alt="Hero" />
         </div>
-      </div>
+
     </section>
     </>
   );
